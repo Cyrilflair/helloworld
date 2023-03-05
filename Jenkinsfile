@@ -10,7 +10,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                tomcat deployUrl: 'http://13.250.64.185:8080/manager/text', credentialsId: 'tomcat', war: 'target/*.war'
+                deploy adapters: [tomcat8(credentialsId: 'tomcat', path: '', url: 'http://13.250.64.185:8080/')], contextPath: null, war: '**/*.war'
             }
         }
     }
